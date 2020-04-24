@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # get "/products/:id/edit" => "products#edit", as: :edit_product
   # patch "/products/:id" => "products#update"
   
-  resources :products do 
+  resources :products do
     # creates the following route for us:
     # post('/products/:product_id/reviews, { to: 'reviews#create', as: :product_reviews })
     # which, due to the 'as' creates a method called 'product_reviews_path' 
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     # the value for ':product_id', in the path it returns 
     # the value: '/products/:product_id/reviews' with the :product_id 
     # "filled in"
+    # Shallow: https://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
     resources :reviews, shallow: true,  only: [:create, :destroy]
   end
 end

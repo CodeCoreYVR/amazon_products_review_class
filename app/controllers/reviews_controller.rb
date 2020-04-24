@@ -4,7 +4,8 @@ class ReviewsController < ApplicationController
         @review = Review.new review_params
         @review.product = @product 
         if @review.save 
-            redirect_to @product 
+            # redirect_to product_path(@product) # or you can use the below short-hand
+            redirect_to @product
         else 
             @reviews = @product.reviews.order(created_at: :desc)
             render 'products/show'
