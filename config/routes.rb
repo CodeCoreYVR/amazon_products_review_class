@@ -9,5 +9,14 @@ Rails.application.routes.draw do
   # get "/products/:id/edit" => "products#edit", as: :edit_product
   # patch "/products/:id" => "products#update"
   
-  resources :products
+  resources :products do 
+    # creates the following route for us:
+    # post('/products/:product_id/reviews, { to: 'reviews#create', as: :product_reviews })
+    # which, due to the 'as' creates a method called 'product_reviews_path' 
+    # This method requires one variable, a product or product id to 'fill in'
+    # the value for ':product_id', in the path it returns 
+    # the value: '/products/:product_id/reviews' with the :product_id 
+    # "filled in"
+    resources :reviews, only: [:create]
+  end
 end
