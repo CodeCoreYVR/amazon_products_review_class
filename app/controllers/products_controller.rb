@@ -20,4 +20,10 @@ class ProductsController < ApplicationController
     def index 
         @products = Product.order(created_at: :DESC)
     end
+
+    def destroy 
+        @product = Product.find(params[:id])
+        @product.destroy 
+        redirect_to products_path
+    end
 end
