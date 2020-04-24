@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     before_action :find_product, only: [:show, :edit, :update, :destroy]
-    
+
     def new 
         @product = Product.new
     end
@@ -26,6 +26,8 @@ class ProductsController < ApplicationController
     end
 
     def show 
+        @review = Review.new 
+        @reviews = @product.reviews.order(created_at: :desc)
     end
 
     def index 

@@ -2,6 +2,8 @@ class Product < ApplicationRecord
     before_validation :set_defaults
     before_save :capitalize_title
 
+    has_many(:reviews, dependent: :destroy)
+
     validates :title, {
         presence: true, 
         uniqueness: { case_sensitive: false}
