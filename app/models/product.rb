@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+    before_validation :set_defaults
+    before_save :capitalize_title
+
     validates :title, {
         presence: true, 
         uniqueness: { case_sensitive: false}
@@ -9,7 +12,17 @@ class Product < ApplicationRecord
     }
     
     validates :description, {
-        presense: true, 
+        presence: true, 
         length: { minimum: 10}
     }
+
+    private 
+
+    def set_defaults
+        self.price ||= 1
+    end
+
+    def capitalize_title 
+        self.title = self.title.capitalize 
+    end
 end
