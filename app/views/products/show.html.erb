@@ -3,6 +3,7 @@
 <p>Description: <%= @product.description %></p>
 <p>Price: <%= number_to_currency(@product.price, precision: 2) %></p>
 
+<%= link_to "Edit Product", edit_product_path(@product) %> |
 <%= link_to 'Delete Product', 
     product_path(@product), 
     method: :delete, 
