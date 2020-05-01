@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # delete "/products/:id" => "products#destroy"
   # get "/products/:id/edit" => "products#edit", as: :edit_product
   # patch "/products/:id" => "products#update"
+  patch "/reviews/:id/toggle" => "reviews#toggle_hidden", as: "toggle_hidden"
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :products do

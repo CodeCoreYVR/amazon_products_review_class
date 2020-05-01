@@ -29,7 +29,17 @@ class ProductsController < ApplicationController
 
     def show 
         @review = Review.new 
-        @reviews = @product.reviews.order(created_at: :desc)
+        # In this case only the product owner will have all reviews available in the 
+        # through @reviews (including hidden reviews).
+        # You ccould also remove this logic here and do some logic in the view. Your
+        # use case (and for now, the size of  your Rails toolset) will determine the best way
+        # to things. We've done it this way because with the tools available to us 
+        # it minimizes the amount of repeated code an d if else statements in our view. 
+        if can? :manage, @product 
+            @reviews = @product.reviews.order(created_at: :desc)
+        else
+            @reviews = @product.reviews.where(hidden: false).order(created_at: :desc)
+        end 
     end
 
     def index 
