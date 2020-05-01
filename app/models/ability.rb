@@ -39,6 +39,14 @@ class Ability
       review.user == user 
     end 
 
+    can :like, Review do |review| 
+      review.user != user 
+    end 
+
+    can :destroy, Like do |like| 
+      like.user == user 
+    end 
+
     # Because the product owner is the only one who 'can?' :manage the product, 
     # we can just use that cancan ability to authorize the hiding of the review
     # for the stretch exercise. 

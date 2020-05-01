@@ -12,10 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
+@import "font-awesome";
+
+$flash-bg-color: palegreen;
+
 .flash-message {
-  background-color: palegreen;
+  background-color: $flash-bg-color;
   border-radius: 5px;
   color: darkolivegreen;
   padding: 8px;

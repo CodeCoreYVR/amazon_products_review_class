@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     # the value: '/products/:product_id/reviews' with the :product_id 
     # "filled in"
     # Shallow: https://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
-    resources :reviews, shallow: true,  only: [:create, :destroy]
+    resources :reviews, shallow: true,  only: [:create, :destroy] do 
+      resources :likes, only: [:create, :destroy]
+    end
   end
 end
