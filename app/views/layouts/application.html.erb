@@ -18,14 +18,20 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <%= link_to 'Home', root_path, class: "nav-item nav-link" %>
           <%= link_to 'New Product', new_product_path, class: "nav-item nav-link" %>
           <%= link_to 'All Products', products_path, class: "nav-item nav-link" %>
-        </div>
+        </ul>
+        <%= link_to 'Sign Up', new_user_path, class: 'btn btn-outline-success my-2 my-sm-0'%>
       </div>
     </nav>
     <div class="container-fluid">
+      <% if flash[:notice].present? || flash[:alert].present? %>
+        <div class="flash-message">
+          <%= flash[:notice] || flash[:alert] %>
+        </div>
+        <% end %>
       <%= yield %>
     </div>
   </body>

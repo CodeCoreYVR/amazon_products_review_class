@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # delete "/products/:id" => "products#destroy"
   # get "/products/:id/edit" => "products#edit", as: :edit_product
   # patch "/products/:id" => "products#update"
-  
+  resources :users, only: [:new, :create]
   resources :products do
     # creates the following route for us:
     # post('/products/:product_id/reviews, { to: 'reviews#create', as: :product_reviews })
