@@ -3,6 +3,7 @@ class Product < ApplicationRecord
     before_save :capitalize_title
 
     has_many(:reviews, dependent: :destroy)
+    belongs_to :user 
 
     validates :title, {
         presence: true, 
